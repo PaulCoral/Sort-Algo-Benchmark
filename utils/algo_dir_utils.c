@@ -54,7 +54,7 @@ algo_interface_t select_algo(const unsigned index) {
     }
   }
 
-  dlclose(dir);
+  closedir(dir);
 
   if (i != index || name == NULL) {
     printf("Can't get algorithm at index %u\n", index);

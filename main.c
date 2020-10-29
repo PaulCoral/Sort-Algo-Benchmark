@@ -33,8 +33,6 @@ algo_interface_t parse_input(int argc, char **argv) {
     list_algos();
     return NULL;
   }
-
-  select_algo(atoi(argv[1]));
-
+  
   return select_algo(atoi(argv[1]));
 }
