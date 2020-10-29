@@ -1,13 +1,7 @@
+#include "../algo_interface/algo_interface.h"
 #include <stdlib.h>
 
-/**
- * @brief representation of an array of random int
- * 
- */
-typedef struct{
-    size_t size;
-    int * arr;
-} rand_array_t;
+
 
 /**
  * @brief create an array of random int
