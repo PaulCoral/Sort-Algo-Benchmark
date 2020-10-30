@@ -18,3 +18,10 @@ typedef struct {
  *
  */
 typedef rand_array_t (*algo_interface_t)(rand_array_t);
+
+/**
+ * @brief the function that will be called by  `sort-algo`
+ * 
+ * @return rand_array_t the array to be sorted
+ */
+rand_array_t algo_sort_func(rand_array_t);
