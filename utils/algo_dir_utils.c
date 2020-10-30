@@ -36,6 +36,8 @@ void list_algos(void) {
   putchar('\n');
 }
 
+// ==================================================================
+
 algo_interface_t select_algo(const unsigned index) {
   DIR *dir = opendir(ALGO_DIR);
 

@@ -12,6 +12,8 @@
 algo_interface_t parse_input(int argc, char **argv);
 void list_algos(void);
 
+// ==================================================================
+
 int main(int argc, char **argv) {
   algo_interface_t algo_to_use = NULL;
   if ((algo_to_use = parse_input(argc, argv)) == NULL) {
@@ -23,6 +25,8 @@ int main(int argc, char **argv) {
   return EXIT_SUCCESS;
 }
 
+// ==================================================================
+
 algo_interface_t parse_input(int argc, char **argv) {
   if (argc != 2) {
     printf("Usage : %s <algorithm index> \nUse option -l to get a list of algo\n", argv[0]);
@@ -33,6 +37,6 @@ algo_interface_t parse_input(int argc, char **argv) {
     list_algos();
     return NULL;
   }
-  
+
   return select_algo(atoi(argv[1]));
 }

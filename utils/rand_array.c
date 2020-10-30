@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// ==================================================================
+
 rand_array_t init_rand_array(const size_t size) {
   rand_array_t ra;
   ra.size = size;
@@ -16,6 +18,8 @@ rand_array_t init_rand_array(const size_t size) {
 
   return ra;
 }
+
+// ==================================================================
 
 void free_rand_array(rand_array_t ra) {
   free(ra.arr);
