@@ -4,7 +4,7 @@ LDFLAGS += -ldl -Wl,-rpath=./my_algos/lib
 
 OUTPUTS = sort_algo 
 ALGOS = my_algos
-.PHONY : clean new my_algos
+.PHONY : clean new my_algos run
 
 
 all :  $(OUTPUTS) $(ALGOS)
@@ -23,3 +23,6 @@ clean :
 	$(MAKE) -C my_algos clean
 
 new : clean all
+
+run : all
+	./sort_algo

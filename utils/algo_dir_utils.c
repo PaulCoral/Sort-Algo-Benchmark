@@ -5,7 +5,7 @@
 
 #include "algo_dir_utils.h"
 
-#define ALGO_DIR "my_algos/"
+#define ALGO_DIR "my_algos/lib"
 #define CURRENT_DIR "."
 #define PARENT_DIR ".."
 
