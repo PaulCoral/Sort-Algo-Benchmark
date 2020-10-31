@@ -9,7 +9,7 @@
 
 // ==================================================================
 
-#define DEFAULT_ARRAY_SIZE 1000
+#define DEFAULT_ARRAY_SIZE 5
 
 #define OPTION_LIST "-l"
 #define FAILURE_EXIT_MESSAGE "\nBetter luck next time :(\n"
@@ -21,9 +21,11 @@ void list_algos(void);
 // ==================================================================
 
 int main(int argc, char **argv) {
+  algo_error_t error = SUCCESS;
+
   algo_interface_t algo_to_use = NULL;
-  if (parse_input(argc, argv, &algo_to_use) != SUCCESS) {
-    puts(FAILURE_EXIT_MESSAGE);
+  if ((error = parse_input(argc, argv, &algo_to_use)) != SUCCESS) {
+    algo_error_print(stderr, error, NULL);
     return EXIT_FAILURE;
   }
   if (algo_to_use == NULL) {
@@ -31,7 +33,15 @@ int main(int argc, char **argv) {
   }
 
   // get random int array
-  rand_array_t array = rand_array_init(DEFAULT_ARRAY_SIZE);
+  rand_array_t array;
+  if((error = rand_array_init(DEFAULT_ARRAY_SIZE, &array)) != SUCCESS){
+    algo_error_print(stderr, error, NULL);
+    return EXIT_FAILURE;
+  }
+
+  rand_array_print(array);
+  fflush(stdout);
+  
 
   algo_to_use(array);
 
@@ -54,7 +64,6 @@ algo_error_t parse_input(int argc, char **argv, algo_interface_t *inter) {
     list_algos();
     return SUCCESS;
   }
-
-  *inter = select_algo(atoi(argv[1]));
-  return SUCCESS;
+  
+  return select_algo(atoi(argv[1]), inter);
 }

@@ -35,5 +35,5 @@ void algo_error_print(FILE* out, algo_error_t err, const char* other){
         strncat(other_cat, other, size_cat);
     }
 
-    fprintf(out, "%s%s%s",title, msg, other);
+    fprintf(out, "\n%s%s%s\n",title, msg, other);
 }

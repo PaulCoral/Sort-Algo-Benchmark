@@ -1,15 +1,17 @@
 #pragma once
 
 #include "../algo_interface/algo_interface.h"
+#include "algo_error.h"
 #include <stdlib.h>
 
 /**
  * @brief create an array of random int
  *
  * @param size the size of the array
- * @return int* the produced array
+ * @param ra pointer to array to initialize
+ * @return An error code
  */
-rand_array_t rand_array_init(const size_t size);
+algo_error_t rand_array_init(const size_t size, rand_array_t* ra);
 
 /**
  * @brief free the given rand_array
@@ -31,4 +33,4 @@ int rand_array_is_sorted(const rand_array_t ra);
  *
  * @param ra the array to print
  */
-void print_rand_array(const rand_array_t ra);
+void rand_array_print(const rand_array_t ra);

@@ -4,6 +4,8 @@
 #include <string.h>
 
 #include "algo_dir_utils.h"
+#include "../algo_interface/algo_interface.h"
+#include "algo_error.h"
 
 #define ALGO_DIR "my_algos/lib"
 #define CURRENT_DIR "."
@@ -38,12 +40,12 @@ void list_algos(void) {
 
 // ==================================================================
 
-algo_interface_t select_algo(const unsigned index) {
+algo_error_t select_algo(const unsigned index, algo_interface_t* ai) {
   DIR *dir = opendir(ALGO_DIR);
 
   if (dir == NULL) {
     fprintf(stderr, "Error : can't access directory.\n");
-    return NULL;
+    return ACCESS_ERR;
   }
 
   size_t i = 0;
@@ -58,31 +60,30 @@ algo_interface_t select_algo(const unsigned index) {
 
   if (i <= index || strlen(name) == 0) {
     printf("Can't get algorithm at index %u\n", index);
-    return NULL;
+    return INV_ARG;
   }
 
   void *handle = NULL;
-  algo_interface_t func = NULL;
   char *error = NULL;
 
   handle = dlopen(name, RTLD_NOW);
   if (handle == NULL) {
     fprintf(stderr, "Error can't load algorithm : %s\n", dlerror());
-    return NULL;
+    return ERR;
   }
 
   dlerror(); /* Clear any error */
 
   // casting due to C99 standard, casting void* to func ptr undefined
-  *(void **)(&func) = dlsym(handle, SORT_FUNC_NAME);
+  *ai = dlsym(handle, SORT_FUNC_NAME);
 
   if ((error = dlerror()) != NULL) {
     fprintf(stderr, "Can't load symbole %s() : %s\n", SORT_FUNC_NAME, error);
-    exit(EXIT_FAILURE);
+    return ERR;
   }
 
   dlclose(handle);
   closedir(dir);
 
-  return func;
+  return SUCCESS;
 }
