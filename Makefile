@@ -14,8 +14,8 @@ my_algos :
 
 sort_algo : main.o utils/algo_dir_utils.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
-	
-main.o: main.c utils/algo_dir_utils.h utils/../algo_interface/algo_interface.h
+
+main.o: main.c utils/algo_dir_utils.h algo_interface/algo_interface.h utils/algo_error.h
 
 clean :
 	rm -rf *.o $(OUTPUTS)
