@@ -9,6 +9,8 @@ LDFLAGS += -shared
 
 OUTPUT = new_algo #replace with your output file
 
+all : $(OUTPUT)
+
 # CHANGE THE RULES
 
 #new_algo : new_algo.o 
