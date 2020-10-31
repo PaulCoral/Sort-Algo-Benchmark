@@ -5,6 +5,11 @@
 #include "algo_interface/algo_interface.h"
 #include "utils/algo_dir_utils.h"
 #include "utils/algo_error.h"
+#include "utils/rand_array.h"
+
+// ==================================================================
+
+#define DEFAULT_ARRAY_SIZE 1000
 
 #define OPTION_LIST "-l"
 #define FAILURE_EXIT_MESSAGE "\nBetter luck next time :(\n"
@@ -21,11 +26,16 @@ int main(int argc, char **argv) {
     puts(FAILURE_EXIT_MESSAGE);
     return EXIT_FAILURE;
   }
-  if(algo_to_use == NULL){
+  if (algo_to_use == NULL) {
     return EXIT_SUCCESS;
   }
 
-  // TODO use func
+  // get random int array
+  rand_array_t array = rand_array_init(DEFAULT_ARRAY_SIZE);
+
+  algo_to_use(array);
+
+  rand_array_free(&array);
 
   puts(SUCCESS_EXIT_MESSAGE);
   return EXIT_SUCCESS;

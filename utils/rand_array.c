@@ -5,7 +5,7 @@
 
 // ==================================================================
 
-rand_array_t init_rand_array(const size_t size) {
+rand_array_t rand_array_init(const size_t size) {
   rand_array_t ra;
   ra.size = size;
   if ((ra.arr = calloc(size, sizeof(int))) == NULL) {
@@ -21,8 +21,35 @@ rand_array_t init_rand_array(const size_t size) {
 
 // ==================================================================
 
-void free_rand_array(rand_array_t ra) {
-  free(ra.arr);
-  ra.size = 0;
-  ra.arr = NULL;
+void rand_array_free(rand_array_t *ra) {
+  free(ra->arr);
+  ra->size = 0;
+  ra->arr = NULL;
+}
+
+// ==================================================================
+
+int rand_array_is_sorted(const rand_array_t ra) {
+  int is_sorted = ra.arr != NULL;
+  for (size_t i = 1; i < ra.size; i++) {
+    is_sorted &= ra.arr[i - 1] <= ra.arr[i];
+  }
+
+  return is_sorted;
+}
+
+// ==================================================================
+
+void rand_array_print(const rand_array_t ra) {
+  if (ra.arr == NULL) {
+    puts("<NULL>");
+    return;
+  }
+
+  printf("Printing a rand_array_t of size %zu : \n", ra.size);
+  putchar('|');
+  for (size_t i = 0; i < ra.size; i++) {
+    printf(" %d ", ra.arr[i]);
+    putchar('|');
+  }
 }
