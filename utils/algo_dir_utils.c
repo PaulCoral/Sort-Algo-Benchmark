@@ -48,17 +48,15 @@ algo_interface_t select_algo(const unsigned index) {
 
   size_t i = 0;
   struct dirent *entry;
-  const char *name = NULL;
-  while ((entry = readdir(dir)) != NULL && i < index) {
-    name = entry->d_name;
+  char name[256];
+  while ((entry = readdir(dir)) != NULL && i <= index) {
+    strncpy(name, entry->d_name, 256);
     if (strcmp(name, CURRENT_DIR) != 0 && strcmp(PARENT_DIR, name) != 0) {
       i++;
     }
   }
 
-  closedir(dir);
-
-  if (i != index || name == NULL) {
+  if (i <= index || strlen(name) == 0) {
     printf("Can't get algorithm at index %u\n", index);
     return NULL;
   }

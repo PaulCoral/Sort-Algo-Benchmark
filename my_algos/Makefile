@@ -5,7 +5,7 @@
 .PHONY : clean
 
 CC = gcc
-CFLAGS += -Wall -fpic
+CFLAGS += -g -Wall -fpic
 LDFLAGS += -shared
 
 OUTPUT = min_sort.so #replace with your output file
