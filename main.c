@@ -40,10 +40,9 @@ int main(int argc, char **argv) {
   }
 
   rand_array_print(array);
-  fflush(stdout);
-  
-
   algo_to_use(array);
+  rand_array_print(array);
+
 
   rand_array_free(&array);
 
