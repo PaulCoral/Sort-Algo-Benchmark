@@ -6,7 +6,7 @@ static void swap_int_ptr(int* a, int *b);
 int* index_of_min(int *arr, const size_t size);
 
 void algo_sort_func(rand_array_t ra){
-    puts("Starting sort");
+    fflush(stdout);
     size_t size = ra.size;
     int * arr = ra.arr;
 
@@ -21,7 +21,6 @@ void algo_sort_func(rand_array_t ra){
         --size;
         ++arr;
     }
-    puts("Sorting finished :)");
 }
 
 static void swap_int_ptr(int* a, int *b){
