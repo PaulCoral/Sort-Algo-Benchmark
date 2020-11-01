@@ -28,7 +28,7 @@
 
 #include <stdio.h>
 
-#include "algo_interface.h"
+#include "../algo_interface/algo_interface.h"
 
 static void swap_int_ptr(int* a, int *b);
 int* index_of_min(int *arr, const size_t size);
