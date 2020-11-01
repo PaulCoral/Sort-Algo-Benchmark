@@ -15,4 +15,10 @@ void list_algos(void);
  * @param ai pointer to the func
  * @return an error code
  */
-algo_error_t select_algo(const unsigned index, algo_interface_t* ai);
+algo_error_t select_algo(const unsigned index, algo_interface_t *ai);
+
+/**
+ * @brief free the handle to shared library
+ *
+ */
+void free_algo_lib(void);

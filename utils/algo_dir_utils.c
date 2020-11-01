@@ -3,13 +3,15 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "algo_dir_utils.h"
 #include "../algo_interface/algo_interface.h"
+#include "algo_dir_utils.h"
 #include "algo_error.h"
 
 #define ALGO_DIR "my_algos/lib"
 #define CURRENT_DIR "."
 #define PARENT_DIR ".."
+
+static void *handle = NULL;
 
 void list_algos(void) {
   puts("The available algorithms are");
@@ -40,7 +42,7 @@ void list_algos(void) {
 
 // ==================================================================
 
-algo_error_t select_algo(const unsigned index, algo_interface_t* ai) {
+algo_error_t select_algo(const unsigned index, algo_interface_t *ai) {
   DIR *dir = opendir(ALGO_DIR);
 
   if (dir == NULL) {
@@ -63,7 +65,6 @@ algo_error_t select_algo(const unsigned index, algo_interface_t* ai) {
     return INV_ARG;
   }
 
-  void *handle = NULL;
   char *error = NULL;
 
   handle = dlopen(name, RTLD_NOW);
@@ -75,16 +76,22 @@ algo_error_t select_algo(const unsigned index, algo_interface_t* ai) {
   dlerror(); /* Clear any error */
 
   // casting due to C99 standard, casting void* to func ptr undefined
-  *((void**)ai) = dlsym(handle, SORT_FUNC_NAME);
+  *((void **)ai) = dlsym(handle, SORT_FUNC_NAME);
 
   if ((error = dlerror()) != NULL) {
     fprintf(stderr, "Can't load symbole %s() : %s\n", SORT_FUNC_NAME, error);
     return ERR;
   }
 
-  // TODO : solve this handle issue
-  //dlclose(handle); 
   closedir(dir);
 
   return SUCCESS;
+}
+
+// ==================================================================
+
+void free_algo_lib(void) {
+  if (handle != NULL) {
+    dlclose(handle);
+  }
 }
