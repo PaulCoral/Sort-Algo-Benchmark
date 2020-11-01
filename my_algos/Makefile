@@ -46,6 +46,7 @@ min_sort.so : min_sort.o
 	$(CC) $(LDFLAGS) $? -o $(OUTPUT_DIR)/$@
 
 min_sort.o : min_sort.c $(INTERFACE_DIR)/algo_interface.h
+	mkdir -p lib
 	$(CC) -c $(CFLAGS) $<
 
 clean:
