@@ -33,6 +33,7 @@ CFLAGS += -g -Wall -fpic
 LDFLAGS += -shared
 
 OUTPUT = min_sort.so #replace with your output file
+INTERFACE_DIR = ../algo_interface
 OUTPUT_DIR = lib
 
 # CHANGE THE RULES
@@ -44,7 +45,7 @@ all : $(OUTPUT)
 min_sort.so : min_sort.o
 	$(CC) $(LDFLAGS) $? -o $(OUTPUT_DIR)/$@
 
-min_sort.o : min_sort.c ../algo_interface/algo_interface.h
+min_sort.o : min_sort.c $(INTERFACE_DIR)/algo_interface.h
 	$(CC) -c $(CFLAGS) $<
 
 clean:
