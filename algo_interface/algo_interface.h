@@ -42,14 +42,15 @@ typedef struct {
 } rand_array_t;
 
 /**
- * @brief the interface used by algorithms. THE FUNCTION SHOULD BE CALLED
+ * @brief the interface used by algorithms. THE FUNCTION SHOULD BE NAMED
  * `algo_sort_func`
  *
  */
 typedef void (*algo_interface_t)(rand_array_t);
 
 /**
- * @brief the function that will be called by  `sort-algo`
+ * @brief the function that will be called by  `sort-algo`. 
+ *  This is the function that will be called from the algorithm given to the program.
  *
  */
 void algo_sort_func(rand_array_t);
