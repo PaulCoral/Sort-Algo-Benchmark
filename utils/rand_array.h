@@ -1,3 +1,13 @@
+/**
+ * @file rand_array.c
+ * @author Paul Coral 
+ * @brief Create, free and print states of random array
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #pragma once
 
 #include "../algo_interface/algo_interface.h"

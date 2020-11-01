@@ -1,3 +1,13 @@
+/**
+ * @file algo_error.c
+ * @author Paul Coral 
+ * @brief A few values and utils funciton to handle errors.
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include "algo_error.h"
 #include <stdio.h>
 #include <string.h>

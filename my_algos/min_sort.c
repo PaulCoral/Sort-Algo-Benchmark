@@ -1,3 +1,13 @@
+/**
+ * @file min_sort.c
+ * @author Paul Coral
+ * @brief A simple sorting algorithm, as an example for the main program
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <stdio.h>
 
 #include "algo_interface.h"

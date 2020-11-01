@@ -1,3 +1,13 @@
+/**
+ * @file algo_dir_utils.c
+ * @author Paul Coral
+ * @brief Some utils function, give algorithm function to the main program
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <dirent.h>
 #include <dlfcn.h>
 #include <stdio.h>

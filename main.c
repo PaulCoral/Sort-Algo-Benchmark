@@ -1,3 +1,13 @@
+/**
+ * @file main.c
+ * @author Paul Coral
+ * @brief A simple program to test speed of sorting algorithm
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,13 @@
+/**
+ * @file algo_interface.h
+ * @author Paul Coral
+ * @brief An interface between the main program, and sorting algorithms
+ * @date 2020-11-01
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #pragma once
 
 #include <stdlib.h>
