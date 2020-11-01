@@ -34,3 +34,10 @@ int rand_array_is_sorted(const rand_array_t ra);
  * @param ra the array to print
  */
 void rand_array_print(const rand_array_t ra);
+
+/**
+ * @brief Print a message, if the array is sorted or not
+ * 
+ * @param ra the array to tell if sorted or not
+ */
+void rand_array_print_is_sorted(const rand_array_t ra);
