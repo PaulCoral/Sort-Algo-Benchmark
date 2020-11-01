@@ -69,9 +69,8 @@ int main(int argc, char **argv) {
   puts("Sorting finished :)\n");
 
   rand_array_print_is_sorted(array);
-  const double time_elapsed = ((double)(t2-t1)) / CLOCKS_PER_SEC;
+  const double time_elapsed = ((double)(t2 - t1)) / CLOCKS_PER_SEC;
   printf("\n\nSorting performed in %.3lf sec.\n\n", time_elapsed);
-
 
   rand_array_free(&array);
 
@@ -85,7 +84,7 @@ int main(int argc, char **argv) {
 
 /**
  * @brief Parse the input arguments, give pointer to sorting function and fill options struct
- * 
+ *
  * @param argc The number of arguement, the argc of main
  * @param argv The list of arguement, the argv of main
  * @param inter The function pointer to sorting function, interface between shared library and the program
