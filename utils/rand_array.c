@@ -71,11 +71,11 @@ int rand_array_is_sorted(const rand_array_t ra) {
 
 void rand_array_print(const rand_array_t ra) {
   if (ra.arr == NULL) {
-    puts("<NULL>");
+    puts("<NULL>\n\n");
     return;
   }
 
-  printf("\nPrinting a rand_array_t of size %zu : \n", ra.size);
+  printf("Printing a rand_array_t of size %zu : \n", ra.size);
   rand_array_print_is_sorted(ra);
   printf("\t|");
   for (size_t i = 0; i < ra.size; i++) {
@@ -89,8 +89,8 @@ void rand_array_print(const rand_array_t ra) {
 
 void rand_array_print_is_sorted(const rand_array_t ra){
   if (rand_array_is_sorted(ra)) {
-    puts("The Array is sorted :)");
+    puts("The array is sorted");
   } else {
-    puts("The Array is NOT sorted :'(");
+    puts("The array is NOT sorted");
   }
 }

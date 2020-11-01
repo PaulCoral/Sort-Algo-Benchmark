@@ -15,15 +15,14 @@
  *   along with Sort-Algo-Workbench.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 /**
  * @file main.c
  * @author Paul Coral
  * @brief A simple program to test speed of sorting algorithm
  * @date 2020-11-01
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 
 #include <stdio.h>
@@ -55,14 +54,15 @@ void list_algos(void);
 
 // ==================================================================
 
-#define PRINT_RA(A, O, BA)                                                                                             \
+#define PRINT_RA(A, O, BA, P)                                                                                          \
   do {                                                                                                                 \
     if (O.BA) {                                                                                                        \
+      puts("\n\n" P " : ");                                                                                                   \
       rand_array_print(A);                                                                                             \
     }                                                                                                                  \
   } while (0)
-#define PRINT_BEFORE(A, O) PRINT_RA(A, O, show_before)
-#define PRINT_AFTER(A, O) PRINT_RA(A, O, show_after)
+#define PRINT_BEFORE(A, O) PRINT_RA(A, O, show_before, "Before")
+#define PRINT_AFTER(A, O) PRINT_RA(A, O, show_after, "After")
 
 // ---------------------------------------
 
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
   algo_to_use(array);
   t2 = clock();
   PRINT_AFTER(array, options);
-  puts("Sorting finished :)\n");
+  puts("Sorting finished !!!\n");
 
   rand_array_print_is_sorted(array);
   const double time_elapsed = ((double)(t2 - t1)) / CLOCKS_PER_SEC;
@@ -147,7 +147,7 @@ algo_error_t parse_input(const int argc, char **argv, algo_interface_t *inter, a
     return INV_ARG;
   }
 
-  for (size_t i = 3; i < (argc - 1); i++) {
+  for (size_t i = 3; i < (argc); i++) {
     if (COMP_ARGS(i, OPTION_SHOW_AFTER)) {
       options->show_after = 1;
     } else if (COMP_ARGS(i, OPTION_SHOW_BEFORE)) {
