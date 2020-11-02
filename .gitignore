@@ -1,4 +1,4 @@
 *.o
-sort_algo_workbench
+sort_algo_benchmark*
 .clang-format
 my_algos/lib/*

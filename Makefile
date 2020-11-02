@@ -1,16 +1,16 @@
-# This file is part of Sort-Algo-Workbench.
+# This file is part of Sort-Algo-Benchmark.
 
-# Sort-Algo-Workbench is free software: you can redistribute it and/or modify
+# Sort-Algo-Benchmark is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# Sort-Algo-Workbench is distributed in the hope that it will be useful,
+# Sort-Algo-Benchmark is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License
-# along with Sort-Algo-Workbench.  If not, see <https://www.gnu.org/licenses/>.
+# along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
  
 # ============================================================================
 
@@ -27,10 +27,11 @@ CFLAGS += -O3 -pedantic -Wall -c
 LDFLAGS += -ldl -Wl,-rpath=./my_algos/lib
 
 
-OUTPUTS = sort_algo_workbench
+OUTPUTS = sort_algo_benchmark
 BIN_DIR = bin
 OTHER_DIR = utils
 ALGOS = my_algos
+ARCHIVE = sort_algo_benchmark_bin_linux.tar.gz
 .PHONY : clean new my_algos run create_bin
 
 
@@ -46,14 +47,14 @@ my_algos : create_bin
 utils: create_bin
 	BIN_DIR=$(shell realpath $(BIN_DIR)) CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@
 
-sort_algo_workbench : utils main.o
+sort_algo_benchmark : utils main.o
 	$(CC) $(LDFLAGS) $(wildcard $(shell realpath $(BIN_DIR)/*)) -o $@
 	
 main.o: main.c utils/algo_dir_utils.h algo_interface/algo_interface.h utils/algo_error.h utils/rand_array.h
 	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
 
 clean :
-	rm -rf *.o $(OUTPUTS) $(BIN_DIR)
+	rm -rf *.o $(OUTPUTS) $(BIN_DIR) $(ARCHIVE)
 	$(MAKE) -C utils clean
 	$(MAKE) -C my_algos clean
 
@@ -63,11 +64,11 @@ debug : new
 new : clean all
 
 run : all
-	./sort_algo_workbench
+	./sort_algo_benchmark
 
 archive: new
-	mkdir -p sort_algo_workbench_bin/my_algos/
-	cp -r my_algos/lib/ sort_algo_workbench_bin/my_algos/
-	cp sort_algo_workbench sort_algo_workbench_bin/
-	tar cvfz sort_algo_workbench_bin.tar.gz sort_algo_workbench_bin/
-	rm -rf sort_algo_workbench_bin/
+	mkdir -p sort_algo_benchmark_bin_linux/my_algos/
+	cp -r my_algos/lib/ sort_algo_benchmark_bin_linux/my_algos/
+	cp sort_algo_benchmark sort_algo_benchmark_bin_linux/
+	tar cvfz $(ARCHIVE) sort_algo_benchmark_bin_linux/
+	rm -rf sort_algo_benchmark_bin_linux/
