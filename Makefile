@@ -23,7 +23,7 @@
 
 
 CC = gcc
-CFLAGS += -g -pedantic -Wall -Iutils
+CFLAGS += -O3 -pedantic -Wall -Iutils
 LDFLAGS += -ldl -Wl,-rpath=./my_algos/lib
 
 OUTPUTS = sort_algo_workbench
@@ -34,7 +34,7 @@ ALGOS = my_algos
 all :  $(OUTPUTS) $(ALGOS)
 
 my_algos :
-	$(MAKE) -C my_algos
+	$(MAKE) -C $@
 
 sort_algo_workbench : main.o utils/algo_dir_utils.o utils/rand_array.o utils/algo_error.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@

@@ -22,7 +22,7 @@
 #  @copyright Copyright (c) 2020
 
 CC = gcc
-CFLAGS += -g -pedantic -Wall
+CFLAGS += -O3 -pedantic -Wall
 CFLAGS += -c
 
 OUTPUTS = algo_dir_utils.o

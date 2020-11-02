@@ -29,7 +29,7 @@
 .PHONY : clean
 
 CC = gcc
-CFLAGS += -g -Wall -fpic
+CFLAGS += -O3 -Wall -fpic
 LDFLAGS += -shared
 
 OUTPUT = min_sort.so #replace with your output file
