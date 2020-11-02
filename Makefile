@@ -64,3 +64,10 @@ new : clean all
 
 run : all
 	./sort_algo_workbench
+
+archive: new
+	mkdir -p sort_algo_workbench_bin/my_algos/
+	cp -r my_algos/lib/ sort_algo_workbench_bin/my_algos/
+	cp sort_algo_workbench sort_algo_workbench_bin/
+	tar cvfz sort_algo_workbench_bin.tar.gz sort_algo_workbench_bin/
+	rm -rf sort_algo_workbench_bin/
