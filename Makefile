@@ -48,13 +48,12 @@ utils: create_bin
 
 sort_algo_workbench : utils main.o
 	$(CC) $(LDFLAGS) $(wildcard $(shell realpath $(BIN_DIR)/*)) -o $@
-	rm -rf $(BIN_DIR)
 	
 main.o: main.c utils/algo_dir_utils.h algo_interface/algo_interface.h utils/algo_error.h utils/rand_array.h
 	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
 
 clean :
-	rm -rf *.o $(OUTPUTS) $(BIN_DIR)/*
+	rm -rf *.o $(OUTPUTS) $(BIN_DIR)
 	$(MAKE) -C utils clean
 	$(MAKE) -C my_algos clean
 
