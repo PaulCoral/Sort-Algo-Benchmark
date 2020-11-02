@@ -41,3 +41,6 @@ rand_array.o: rand_array.c rand_array.h
 
 algo_error.o: algo_error.c algo_error.h
 	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
+
+format :
+	clang-format -i -style=file $(wildcard *.c) $(wildcard *.h)

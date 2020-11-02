@@ -12,19 +12,18 @@
  *   GNU General Public License for more details.
  *
  *   You should have received a copy of the GNU General Public License
- *   along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with Sort-Algo-Benchmark.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
-
-
 
 /**
  * @file algo_dir_utils.c
  * @author Paul Coral
  * @brief Some utils function, give algorithm function to the main program
  * @date 2020-11-01
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 
 #pragma once

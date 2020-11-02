@@ -55,8 +55,8 @@ main.o: main.c utils/algo_dir_utils.h algo_interface/algo_interface.h utils/algo
 
 clean :
 	rm -rf *.o $(OUTPUTS) $(BIN_DIR) $(ARCHIVE)
-	$(MAKE) -C utils clean
-	$(MAKE) -C my_algos clean
+	$(MAKE) -C $(ALGOS) clean
+	$(MAKE) -C $(OTHER_DIR) clean
 
 debug : CFLAGS += -g
 debug : new
@@ -72,3 +72,9 @@ archive: new
 	cp sort_algo_benchmark sort_algo_benchmark_bin_linux/
 	tar cvfz $(ARCHIVE) sort_algo_benchmark_bin_linux/
 	rm -rf sort_algo_benchmark_bin_linux/
+
+format :
+	clang-format -i -style=file $(wildcard *.c) $(wildcard *.h)
+	clang-format -i -style=file $(wildcard algo_interface/*.c) $(wildcard algo_interface/*.h)
+	$(MAKE) -C $(ALGOS) format
+	$(MAKE) -C $(OTHER_DIR) format

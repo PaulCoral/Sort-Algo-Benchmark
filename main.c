@@ -12,9 +12,9 @@
  *   GNU General Public License for more details.
  *
  *   You should have received a copy of the GNU General Public License
- *   along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with Sort-Algo-Benchmark.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
-
 
 /**
  * @file main.c
@@ -58,7 +58,7 @@ void list_algos(void);
 #define PRINT_RA(A, O, BA, P)                                                                                          \
   do {                                                                                                                 \
     if (O.BA) {                                                                                                        \
-      puts("\n\n" P " : ");                                                                                                   \
+      puts("\n\n" P " : ");                                                                                            \
       rand_array_print(A);                                                                                             \
     }                                                                                                                  \
   } while (0)
@@ -112,12 +112,15 @@ int main(int argc, char **argv) {
 #define COMP_ARGS(X, Y) (strcmp(argv[(X)], (Y)) == 0)
 
 /**
- * @brief Parse the input arguments, give pointer to sorting function and fill options struct
+ * @brief Parse the input arguments, give pointer to sorting function and fill
+ * options struct
  *
  * @param argc The number of arguement, the argc of main
  * @param argv The list of arguement, the argv of main
- * @param inter The function pointer to sorting function, interface between shared library and the program
- * @param options A pointer to struct options, which will be initialized and filled by this function
+ * @param inter The function pointer to sorting function, interface between
+ * shared library and the program
+ * @param options A pointer to struct options, which will be initialized and
+ * filled by this function
  * @return algo_error_t An error code
  */
 algo_error_t parse_input(const int argc, char **argv, algo_interface_t *inter, algo_args_t *options) {
@@ -133,7 +136,9 @@ algo_error_t parse_input(const int argc, char **argv, algo_interface_t *inter, a
   }
 
   if (argc < 3) {
-    printf("Usage : %s <algorithm index> <size of array (non-zero)> [OPTIONS...] \n", argv[0]);
+    printf("Usage : %s <algorithm index> <size of array (non-zero)> "
+           "[OPTIONS...] \n",
+           argv[0]);
     printf("Usage : %s %s to show list of available algorithm \n", argv[0], OPTION_LIST);
     printf("OPTION : %s to show list after sort\n", OPTION_SHOW_AFTER);
     printf("OPTION : %s to show list before sort\n", OPTION_SHOW_BEFORE);

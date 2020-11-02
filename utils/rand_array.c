@@ -12,19 +12,18 @@
  *   GNU General Public License for more details.
  *
  *   You should have received a copy of the GNU General Public License
- *   along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with Sort-Algo-Benchmark.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
-
-
 
 /**
  * @file rand_array.c
- * @author Paul Coral 
+ * @author Paul Coral
  * @brief Create, free and print states of random array
  * @date 2020-11-01
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 
 #include <bits/types/__FILE.h>
@@ -88,7 +87,7 @@ void rand_array_print(const rand_array_t ra) {
 
 // ==================================================================
 
-void rand_array_print_is_sorted(const rand_array_t ra){
+void rand_array_print_is_sorted(const rand_array_t ra) {
   if (rand_array_is_sorted(ra)) {
     puts("The array is sorted");
   } else {

@@ -51,3 +51,6 @@ min_sort.o : min_sort.c $(INTERFACE_DIR)/algo_interface.h
 clean:
 	rm -rf *.o
 	$(foreach prog,$(OUTPUT), rm -rf $(OUTPUT_DIR)/$(OUTPUT))
+
+format :
+	clang-format -i -style=file $(wildcard *.c) $(wildcard *.h)

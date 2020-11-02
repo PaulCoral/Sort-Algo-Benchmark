@@ -12,19 +12,18 @@
  *   GNU General Public License for more details.
  *
  *   You should have received a copy of the GNU General Public License
- *   along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with Sort-Algo-Benchmark.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
-
-
 
 /**
  * @file rand_array.c
- * @author Paul Coral 
+ * @author Paul Coral
  * @brief Create, free and print states of random array
  * @date 2020-11-01
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 
 #pragma once
@@ -40,7 +39,7 @@
  * @param ra pointer to array to initialize
  * @return An error code
  */
-algo_error_t rand_array_init(const size_t size, rand_array_t* ra);
+algo_error_t rand_array_init(const size_t size, rand_array_t *ra);
 
 /**
  * @brief free the given rand_array
@@ -66,7 +65,7 @@ void rand_array_print(const rand_array_t ra);
 
 /**
  * @brief Print a message, if the array is sorted or not
- * 
+ *
  * @param ra the array to tell if sorted or not
  */
 void rand_array_print_is_sorted(const rand_array_t ra);

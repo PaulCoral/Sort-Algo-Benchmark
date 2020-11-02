@@ -12,18 +12,18 @@
  *   GNU General Public License for more details.
  *
  *   You should have received a copy of the GNU General Public License
- *   along with Sort-Algo-Benchmark.  If not, see <https://www.gnu.org/licenses/>.
+ *   along with Sort-Algo-Benchmark.  If not, see
+ * <https://www.gnu.org/licenses/>.
  */
-
 
 /**
  * @file algo_interface.h
  * @author Paul Coral
  * @brief An interface between the main program, and sorting algorithms
  * @date 2020-11-01
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 
 #pragma once
@@ -49,8 +49,9 @@ typedef struct {
 typedef void (*algo_interface_t)(rand_array_t);
 
 /**
- * @brief the function that will be called by  `sort-algo`. 
- *  This is the function that will be called from the algorithm given to the program.
+ * @brief the function that will be called by  `sort-algo`.
+ *  This is the function that will be called from the algorithm given to the
+ * program.
  *
  */
 void algo_sort_func(rand_array_t);
