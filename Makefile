@@ -23,18 +23,22 @@
 
 
 CC = gcc
-CFLAGS += -O3 -pedantic -Wall -Iutils
+CFLAGS += -O3 -pedantic -Wall
 LDFLAGS += -ldl -Wl,-rpath=./my_algos/lib
 
 OUTPUTS = sort_algo_workbench
+OTHER_DIR = utils
 ALGOS = my_algos
 .PHONY : clean new my_algos run
 
 
-all :  $(OUTPUTS) $(ALGOS)
+all :  $(OTHER_DIR) $(OUTPUTS) $(ALGOS)
 
 my_algos :
-	$(MAKE) -C $@
+	CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@ 
+
+utils:
+	CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@ 
 
 sort_algo_workbench : main.o utils/algo_dir_utils.o utils/rand_array.o utils/algo_error.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@

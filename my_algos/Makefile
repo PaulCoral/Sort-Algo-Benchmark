@@ -28,8 +28,7 @@
 
 .PHONY : clean
 
-CC = gcc
-CFLAGS += -O3 -Wall -fpic
+CFLAGS += -fPIC -c
 LDFLAGS += -shared
 
 OUTPUT = min_sort.so #replace with your output file
@@ -47,7 +46,7 @@ min_sort.so : min_sort.o
 
 min_sort.o : min_sort.c $(INTERFACE_DIR)/algo_interface.h
 	mkdir -p $(OUTPUT_DIR)
-	$(CC) -c $(CFLAGS) $<
+	$(CC) $(CFLAGS) $<
 
 clean:
 	rm -rf *.o
