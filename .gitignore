@@ -1,3 +1,4 @@
 *.o
 sort_algo_benchmark*
 my_algos/lib/*
+bin/
