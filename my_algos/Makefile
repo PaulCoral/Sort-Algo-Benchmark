@@ -28,7 +28,7 @@
 
 .PHONY : clean
 
-CFLAGS += -fPIC -c
+CFLAGS += -fPIC
 LDFLAGS += -shared
 
 OUTPUT = min_sort.so #replace with your output file

@@ -23,34 +23,45 @@
 
 
 CC = gcc
-CFLAGS += -O3 -pedantic -Wall
+CFLAGS += -O3 -pedantic -Wall -c
 LDFLAGS += -ldl -Wl,-rpath=./my_algos/lib
 
+
 OUTPUTS = sort_algo_workbench
+BIN_DIR = bin
 OTHER_DIR = utils
 ALGOS = my_algos
-.PHONY : clean new my_algos run
+.PHONY : clean new my_algos run create_bin
 
 
-all :  $(OTHER_DIR) $(OUTPUTS) $(ALGOS)
+all : $(OTHER_DIR) $(ALGOS) $(OUTPUTS)
 
-my_algos :
-	CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@ 
+create_bin :
+	mkdir -p $(BIN_DIR)
+	$(eval BIN_DIR = $(shell realpath $(BIN_DIR)))
 
-utils:
-	CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@ 
+my_algos : create_bin
+	BIN_DIR=$(shell realpath $(BIN_DIR)) CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@
 
-sort_algo_workbench : main.o utils/algo_dir_utils.o utils/rand_array.o utils/algo_error.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $? -o $@
+utils: create_bin
+	BIN_DIR=$(shell realpath $(BIN_DIR)) CFLAGS='$(CFLAGS)' CC='$(CC)' $(MAKE) -C $@
 
+sort_algo_workbench : utils main.o
+	$(CC) $(LDFLAGS) $(wildcard $(shell realpath $(BIN_DIR)/*)) -o $@
+	rm -rf $(BIN_DIR)
+	
 main.o: main.c utils/algo_dir_utils.h algo_interface/algo_interface.h utils/algo_error.h utils/rand_array.h
+	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
 
 clean :
-	rm -rf *.o $(OUTPUTS)
+	rm -rf *.o $(OUTPUTS) $(BIN_DIR)/*
 	$(MAKE) -C utils clean
 	$(MAKE) -C my_algos clean
+
+debug : CFLAGS += -g
+debug : new
 
 new : clean all
 
 run : all
-	./sort_algo
+	./sort_algo_workbench

@@ -21,9 +21,8 @@
 #  
 #  @copyright Copyright (c) 2020
 
-CFLAGS += -c
 
-OUTPUTS = algo_dir_utils.o
+OUTPUTS = algo_dir_utils.o rand_array.o algo_error.o
 
 .PHONY: clean new
 
@@ -35,7 +34,10 @@ clean :
 new : clean all
 
 algo_dir_utils.o: algo_dir_utils.c algo_dir_utils.h
+	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
 
 rand_array.o: rand_array.c rand_array.h
+	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
 
 algo_error.o: algo_error.c algo_error.h
+	$(CC) $(CFLAGS) $< -o $(BIN_DIR)/$@
