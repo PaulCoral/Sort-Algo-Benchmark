@@ -26,8 +26,8 @@
  *
  */
 
-#include <stdio.h>
 #include <assert.h>
+#include <stdio.h>
 
 #include "../algo_interface/algo_interface.h"
 
