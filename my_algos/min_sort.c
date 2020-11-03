@@ -27,14 +27,14 @@
  */
 
 #include <stdio.h>
+#include <assert.h>
 
 #include "../algo_interface/algo_interface.h"
 
 static void swap_int_ptr(int *a, int *b);
-int *index_of_min(int *arr, const size_t size);
+static int *index_of_min(int *arr, const size_t size);
 
 void algo_sort_func(rand_array_t ra) {
-  fflush(stdout);
   size_t size = ra.size;
   int *arr = ra.arr;
 
@@ -52,12 +52,14 @@ void algo_sort_func(rand_array_t ra) {
 }
 
 static void swap_int_ptr(int *a, int *b) {
+  assert(a != NULL && b != NULL);
   int tmp = *a;
   *a = *b;
   *b = tmp;
 }
 
-int *index_of_min(int *arr, const size_t size) {
+static int *index_of_min(int *arr, const size_t size) {
+  assert(arr != NULL);
   size_t min_index = 0;
   int min = arr[0];
   for (size_t i = 0; i < size; i++) {
