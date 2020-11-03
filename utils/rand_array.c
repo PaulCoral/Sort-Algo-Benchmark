@@ -59,12 +59,21 @@ void rand_array_free(rand_array_t *ra) {
 // ==================================================================
 
 int rand_array_is_sorted(const rand_array_t ra) {
-  int is_sorted = ra.arr != NULL;
+  if (ra.arr == NULL) {
+    fprintf(stderr, "Warning : calling is_sorted on NULL array : %s in %s, line %d", __func__, __FILE__, __LINE__);
+    return 0;
+  }
+  int is_sorted_inc = 1;
   for (size_t i = 1; i < ra.size; i++) {
-    is_sorted &= ra.arr[i - 1] <= ra.arr[i];
+    is_sorted_inc &= ra.arr[i - 1] <= ra.arr[i];
   }
 
-  return is_sorted;
+  int is_sorted_dec = 1;
+  for (size_t i = 1; i < ra.size; i++) {
+    is_sorted_inc &= ra.arr[i - 1] >= ra.arr[i];
+  }
+
+  return is_sorted_inc || is_sorted_dec;
 }
 
 // ==================================================================
